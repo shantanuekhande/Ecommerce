@@ -9,7 +9,9 @@ urlpatterns = [
     # path('products/<int:pk>/', views.ProductRetrieveUpdateDeleteView.as_view(), name='product-detail')
     path('products/', views.product_list_create, name='product-list-create'),  # Lists and creates products
     path('product/<int:pk>/', views.product_detail, name='product-detail'),  # Get a single product
-    path('deleteproduct/<int:id>/', views.delete_product, name='delete-product')
+    path('deleteproduct/<int:id>/', views.delete_product, name='delete-product'),
+    path('products/filter/', views.product_filter, name='product-filter')
+
 
 ]
 
