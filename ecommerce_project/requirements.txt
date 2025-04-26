@@ -1,0 +1,10 @@
+# Core Packages (Tested with Python 3.9.12)
+django==4.2.11          # Django 4.2 LTS (last bug-fix release for max stability)
+djangorestframework==3.14.0  # DRF 3.14 (official Python 3.9 support)
+drf-spectacular==0.26.2      # Swagger/OpenAPI (compatible with DRF 3.14)
+
+# Dependencies (Explicitly pinned for safety)
+pyyaml==6.0.1           # Required by drf-spectacular
+uritemplate==4.1.1      # OpenAPI URI templating
+asgiref==3.7.2          # Django async dependency
+sqlparse==0.4.4         # Django SQL parsing

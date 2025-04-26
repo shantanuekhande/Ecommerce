@@ -1,17 +1,17 @@
 from django.urls import path
-from . import views
+from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
+from .views import HelloWorldView, ProductListView, ProductDetailView, ProductFilterView
 
+# URL patterns
 urlpatterns = [
-    path('hello/', views.hello_world, name='hello_world'),
-    # path('products/', views.product_list, name='product_list'),
-    # path('products/<int:id>/', views.product_detail, name='product_detail'),
-    # path('products/', views.ProductListCreateView.as_view(), name='product-list-create'),
-    # path('products/<int:pk>/', views.ProductRetrieveUpdateDeleteView.as_view(), name='product-detail')
-    path('products/', views.product_list_create, name='product-list-create'),  # Lists and creates products
-    path('product/<int:pk>/', views.product_detail, name='product-detail'),  # Get a single product
-    path('deleteproduct/<int:id>/', views.delete_product, name='delete-product'),
-    path('products/filter/', views.product_filter, name='product-filter')
+    # Application endpoints
+    path('', HelloWorldView.as_view(), name='hello_world'),
+    path('products/', ProductListView.as_view(), name='product_list_create'),
+    path('products/<int:product_id>/', ProductDetailView.as_view(), name='product_detail'),
+    path('products/filter/', ProductFilterView.as_view(), name='product_filter'),
 
-
+    # drf-spectacular endpoints
+    path('api/schema/', SpectacularAPIView.as_view(), name='schema'),  # Provides the OpenAPI schema
+    path('api/swagger-ui/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),  # Swagger
+    path('api/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),  # ReDoc
 ]
-
